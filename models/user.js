@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var bcrypt   = require('bcrypt');
+var bcrypt = require('bcrypt');
 
 var userSchema = new mongoose.Schema({
   username: { type: String, required: true, unique: true },
@@ -43,6 +43,8 @@ userSchema.path('passwordHash')
     }
   });
 
-
+userSchema.methods.validatePassword = function(password) {
+  return bcrypt.compareSync(password, this.passwordHash);
+}
 
 module.exports = mongoose.model("User", userSchema);
