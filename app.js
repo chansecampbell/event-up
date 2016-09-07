@@ -3,6 +3,8 @@ var app         = express();
 var mongoose    = require('mongoose');
 var bodyParser  = require('body-parser');
 var cors        = require('cors');
+var bluebird    = require ('bluebird');
+var qs          = require('qs');
 
 var environment = app.get('env');
 var port        = process.env.PORT || 3000;
@@ -10,6 +12,8 @@ var routes      = require('./config/routes');
 var databaseUri = require('./config/db')(environment);
 
 mongoose.connect(databaseUri);
+
+mongoose.Promise = bluebird;
 
 if('test' !== environment) {
   app.use(require('morgan')('dev'));

@@ -1,8 +1,10 @@
-var router = require('express').Router();
-var jwt = require('jsonwebtoken');
-var secret = require('../config/tokens').secret;
-var usersController = require('../controllers/users');
-var authController = require('../controllers/authentications');
+var router              = require('express').Router();
+var jwt                 = require('jsonwebtoken');
+var secret              = require('../config/tokens').secret;
+var usersController     = require('../controllers/users');
+var authController      = require('../controllers/authentications');
+var facebookController  = require('../controllers/oauth');
+
 
 function secureRoute(req, res, next) {
   if(!req.headers.authorization) return res.status(401).json({ message: "Unauthorized" });
@@ -31,5 +33,7 @@ router.route('/users/:id')
 
 router.post('/register', authController.register);
 router.post('/login', authController.login);
+
+router.post('/oauth/facebook', facebookController.login);
 
 module.exports = router;

@@ -16,7 +16,7 @@ function login(req, res) {
   })
   .then(function(access_token) {
     return request.get({
-      url: "https://graph.facebook.com/v2.5/me?fields=id,email,name,picture",
+      url: "https://graph.facebook.com/v2.5/me?fields=id,username,email,first_name,last_name,picture",
       qs: access_token,
       json: true
     });
@@ -31,6 +31,8 @@ function login(req, res) {
         else {
           user = new User({
             username: profile.login,
+            first_name: profile.first_name,
+            last_name: profile.last_name,
             email: profile.email,
             facebookId: profile.id,
             avatar: profile.picture ? profile.picture.data.url : null
