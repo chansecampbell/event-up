@@ -1,5 +1,5 @@
 angular
-      .module('EventUpApp', ["ui.router", "ngResource", "angular-jwt"])
+      .module('EventUpApp', ["ui.router", "ngResource", "angular-jwt", "satellizer"])
       .constant("API", "http://localhost:3000/api")
       .config(setupInterceptor)
       .config(Router);
