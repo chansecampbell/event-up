@@ -23,14 +23,15 @@
 <nav>
   <ul>
     <li ui-sref="home">Home</li>
-    <li ui-sref="users">Users</li>
-    <li ui-sref="login">Login</li>
-    <li ui-sref="register">Register</li>
-    <li ui-sref="home">Logout</li>
+    <li ui-sref="users" ng-if="main.currentUser">Users</li>
+    <li ui-sref="login" ng-if="!main.currentUser">Login</li>
+    <li ui-sref="register" ng-if="!main.currentUser">Register</li>
+    <li ui-sref="home" ng-if="main.currentUser" ng-click="main.logout()">Logout</li>
   </ul>
 </nav>
-<h1>What's happening..</h1>
-<div>{{ main.hello }}</div>
+<div ng-if="main.errorMessage">
+    <div>{{ main.errorMessage }}</div>
+</div>
 <main ui-view></main>
 </body>
 </html>

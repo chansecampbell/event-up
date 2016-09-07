@@ -1,13 +1,13 @@
 angular
       .module('EventUpApp', ["ui.router", "ngResource", "angular-jwt"])
       .constant("API", "http://localhost:3000/api")
-      // .config(setupInterceptor)
+      .config(setupInterceptor)
       .config(Router);
 
-// setupInterceptor.$inject = ["$httpProvider"];
-// function setupInterceptor($httpProvider) {
-//   return $httpProvider.interceptors.push("AuthInterceptor");
-// }
+setupInterceptor.$inject = ["$httpProvider"];
+function setupInterceptor($httpProvider) {
+  return $httpProvider.interceptors.push("AuthInterceptor");
+}
 
 Router.$inject = ["$stateProvider", "$urlRouterProvider"];
 function Router($stateProvider, $urlRouterProvider) {
