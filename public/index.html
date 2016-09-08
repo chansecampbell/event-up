@@ -16,22 +16,78 @@
   <script type="text/javascript" src="/js/controllers/register.js"></script>
   <script type="text/javascript" src="/js/controllers/login.js"></script>
   <script type="text/javascript" src="/js/services/token.js"></script>
+  <!-- Vendor Stylesheets -->
+  <link rel="stylesheet" type="text/css" href="/bower_components/font-awesome/css/font-awesome.min.css">
   <!-- Custom Stylesheets -->
+  <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+  <link rel="stylesheet" type="text/css" href="/css/skeleton.css">
   <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body ng-controller="MainController as main">
-<nav>
-  <ul>
-    <li ui-sref="home">Home</li>
-    <li ui-sref="users" ng-if="main.currentUser">Users</li>
-    <li ui-sref="login" ng-if="!main.currentUser">Login</li>
-    <li ui-sref="register" ng-if="!main.currentUser">Register</li>
-    <li ui-sref="home" ng-if="main.currentUser" ng-click="main.logout()">Logout</li>
-  </ul>
-</nav>
+<header>
+  <div class="container">
+    <div class="row">
+      <div ng-class="home.navClass" class="twelve columns" id="title">
+       <h1 class="header"><a ui-sref="home" ng-click="home.reverseAnimateNav()">Event Up</a></h1>
+      </div>
+      </div>
+
+      <div class="row nav-link">
+        <div class="three columns" ng-class="home.navClass" id="about">
+          <li ng-if="main.currentUser"><a ui-sref-active="active" ui-sref="home">
+          <i class="fa fa-male" aria-hidden="true"></i>
+          <br><code>Home</code>
+          </a>
+          </li>
+        </div>
+        <div class="three columns" ng-class="home.navClass" id="about">
+          <li ng-if="main.currentUser"><a ui-sref-active="active" ui-sref="home">
+          <i class="fa fa-male" aria-hidden="true"></i>
+          <br><code>About</code>
+          </a>
+          </li>
+        </div>
+        <div class="three columns" ng-class="home.navClass" id="projects">
+          <li ng-if="main.currentUser"><a ui-sref-active="active" ui-sref="users">
+          <i class="fa fa-code" aria-hidden="true"></i>
+          <br><code>Users</code>
+          </a>
+          </li>
+        </div>
+        <div class="three columns" ng-class="home.navClass" id="blog">
+          <li ng-if="!main.currentUser"><a ui-sref-active="active" ui-sref="login">
+          <i class="fa fa-rss-square" aria-hidden="true"></i>
+          <br><code>Login</code>
+          </a>
+          </li>
+        </div>
+        <div class="three columns" ng-class="home.navClass" id="contact">
+          <li ng-if="!main.currentUser"><a ui-sref-active="active" ui-sref="register">
+          <i class="fa fa-envelope" aria-hidden="true"></i>
+          <br><code>Register</code>
+          </a>
+          </li>
+        </div>
+        <div class="three columns" ng-class="home.navClass" id="contact">
+          <li ng-if="main.currentUser"><a ui-sref-active="active" ui-sref="home" ng-click="main.logout()">
+          <i class="fa fa-envelope" aria-hidden="true"></i>
+          <br><code>Logout</code>
+          </a>
+          </li>
+        </div>
+     </div>
+    </div>
+</header>
+
 <div ng-if="main.errorMessage">
     <div>{{ main.errorMessage }}</div>
 </div>
-<main ui-view></main>
+
+<div class="container">
+  <div class="row">
+    <main ui-view class="twelve columns"></main>
+  </div>
+</div>
+
 </body>
 </html>
