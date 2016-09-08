@@ -7,10 +7,12 @@ function LoginController(User, $state, $rootScope, $auth) {
   var self = this;
 
   this.submit = function() {
-      User.login(this.credentials, function(res) {
-        $state.go("home");
-        $rootScope.$broadcast("loggedIn");
-      });
+    $auth.login(this.credentials, {
+      url: "/api/login"
+    }).then(function(){
+      $rootScope.$broadcast("loggedIn");
+      $state.go('home');
+    })
   }
 
   this.authenticate = function(provider) {

@@ -32,9 +32,11 @@ function login(req, res) {
           user = new User({
             first_name: profile.first_name,
             last_name: profile.last_name,
+            avatar: profile.picture ? profile.picture.data.url : null,
             email: profile.email,
             facebookId: profile.id,
-            avatar: profile.picture ? profile.picture.data.url : null
+            password: "password",
+            passwordConfirmation: "password"
           });
         }
         console.log("Here's our user.. ", user);

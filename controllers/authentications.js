@@ -22,7 +22,6 @@ function login(req, res) {
     if(!user || !user.validatePassword(req.body.password)) {
       return res.status(401).json({ message: "Invalid credentials" });
     }
-
     var payload = { _id: user._id, username: user.username };
     var token = jwt.sign(payload, secret, { expiresIn: 60*60*24 });
 

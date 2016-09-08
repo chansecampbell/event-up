@@ -2,7 +2,6 @@ angular
       .module('EventUpApp', ["ui.router", "ngResource", "angular-jwt", "satellizer"])
       .constant("API", "http://localhost:3000/api")
       .config(oAuthConfig)
-      .config(setupInterceptor)
       .config(Router);
 
 oAuthConfig.$inject = ["$authProvider", "API"];
@@ -11,11 +10,6 @@ function oAuthConfig($authProvider, API) {
     url: API + "/oauth/facebook",
     clientId: "1110723275675004"
   });
-}
-
-setupInterceptor.$inject = ["$httpProvider"];
-function setupInterceptor($httpProvider) {
-  return $httpProvider.interceptors.push("AuthInterceptor");
 }
 
 Router.$inject = ["$stateProvider", "$urlRouterProvider"];

@@ -7,7 +7,7 @@ var userSchema = new mongoose.Schema({
   avatar: { type: String, required: true },
   facebookId: { type: String },
   email: { type: String, required: true, unique: true },
-  passwordHash: { type: String, passwordRequired }
+  passwordHash: { type: String, required: true }
 });
 
 userSchema.set('toJSON', {
@@ -18,16 +18,21 @@ userSchema.set('toJSON', {
   }
 });
 
-var passwordRequired = {
-        validator: function(value) {
-            if(self.password === undefined && self.facebookId !== undefined) {
-              value = {required: false};
-            } else {
-              value = {required: true};
-            }
-            return value;
-        }
-      };
+// userSchema.pre("save", function(next) {
+//     var self = this;
+//     passwordRequired = {
+//             validator: function(value) {
+//                 if(self.facebookId.length === 20) {
+//                   value = false;
+//                 } else {
+//                   value = true;
+//                 }
+//                 return value;
+//             }
+//           };
+//           next();
+// });
+
 
 userSchema.virtual('password')
   .set(function(password) {

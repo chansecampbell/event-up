@@ -2,27 +2,24 @@ angular
       .module('EventUpApp')
       .controller('MainController', MainController);
 
-MainController.$inject = ["TokenService", "$state", "$rootScope"];
-function MainController(TokenService, $state, $rootScope) {
-    var self = this;
-    this.currentUser = TokenService.decodeToken();
+MainController.$inject = ["$auth", "$state", "$rootScope"];
+function MainController($auth, $state, $rootScope) {
+  var self = this;
 
-    this.logout = function() {
-      TokenService.clearToken();
-      this.currentUser = null;
-      $state.go("home");
-    }
+  this.currentUser = $auth.getPayload();
 
-    $rootScope.$on("loggedIn", function() {
-        self.currentUser = TokenService.decodeToken();
-    });
+  this.logout = function() {
+    $auth.logout();
+    this.currentUser = null;
+    $state.go("home");
+  }
 
-    $rootScope.$on("unauthorized", function() {
-        $state.go("login");
-        self.errorMessage = "You're not getting in here!";
-    });
+  $rootScope.$on("unauthorized", function() {
+      $state.go("login");
+      self.errorMessage = "You're not getting in here!";
+  });
 
-    $rootScope.$on("$stateChangeStart", function() {
-        self.errorMessage = null;
-    });
+  $rootScope.$on("loggedIn", function() {
+    self.currentUser = $auth.getPayload();
+  });
 }
