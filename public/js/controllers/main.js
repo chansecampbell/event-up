@@ -22,4 +22,8 @@ function MainController($auth, $state, $rootScope) {
   $rootScope.$on("loggedIn", function() {
     self.currentUser = $auth.getPayload();
   });
+
+  $rootScope.$on("$stateChangeStart", function() {
+      self.errorMessage = null;
+  });
 }
