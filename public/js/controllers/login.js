@@ -19,8 +19,8 @@ function LoginController(User, $state, $rootScope, $auth) {
     $auth.authenticate(provider)
     .then(function() {
      self.currentUser = $auth.getPayload();
-     $state.go("home");
      $rootScope.$broadcast("loggedIn");
+     $state.go("home");
     });
   }
 
