@@ -1,16 +1,6 @@
 angular
       .module('EventUpApp')
-      .config(oAuthConfig)
       .controller('LoginController', LoginController);
-
-oAuthConfig.$inject = ["$authProvider"];
-function oAuthConfig($authProvider) {
-  $authProvider.facebook({
-    url: "/oauth/facebook",
-    clientId: "1110723275675004"
-  });
-
-}
 
 LoginController.$inject = ["User", "$state", "$rootScope", "$auth"];
 function LoginController(User, $state, $rootScope, $auth) {
@@ -25,7 +15,7 @@ function LoginController(User, $state, $rootScope, $auth) {
 
   this.authenticate = function(provider) {
     $auth.authenticate(provider)
-    .then (function() {
+    .then(function() {
      self.currentUser = $auth.getPayload();
     });
   }

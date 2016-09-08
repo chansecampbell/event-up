@@ -16,7 +16,7 @@ function login(req, res) {
   })
   .then(function(access_token) {
     return request.get({
-      url: "https://graph.facebook.com/v2.5/me?fields=id,username,email,first_name,last_name,picture",
+      url: "https://graph.facebook.com/v2.5/me?fields=id,email,first_name,last_name,picture.width(300)",
       qs: access_token,
       json: true
     });
@@ -30,7 +30,6 @@ function login(req, res) {
         }
         else {
           user = new User({
-            username: profile.login,
             first_name: profile.first_name,
             last_name: profile.last_name,
             email: profile.email,
@@ -38,7 +37,7 @@ function login(req, res) {
             avatar: profile.picture ? profile.picture.data.url : null
           });
         }
-
+        console.log("Here's our user.. ", user);
         return user.save();
       })
   })
@@ -46,7 +45,7 @@ function login(req, res) {
     var payload = {
       _id: user._id,
       avatar: user.avatar,
-      username: user.username
+      email: user.email
     };
 
     var token = jwt.sign(payload, secret, { expiresIn: '24h' });
