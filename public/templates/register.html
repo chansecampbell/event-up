@@ -2,8 +2,15 @@
 
 <form ng-submit="register.submit()">
   <div class="form-group">
-    <input type="text" name="username" class="form-control" ng-model="register.user.username" placeholder="Username">
+    <input type="first_name" name="first_name" class="form-control" ng-model="register.user.first_name" placeholder="First Name">
   </div>
+  <div class="form-group">
+    <input type="last_name" name="last_name" class="form-control" ng-model="register.user.last_name" placeholder="Last Name">
+  </div>
+  <div class="form-group">
+    <input type="avatar" name="avatar" class="form-control" ng-model="register.user.avatar" placeholder="Avatar URL">
+  </div>
+
   <div class="form-group">
     <input type="email" name="email" class="form-control" ng-model="register.user.email" placeholder="Email">
   </div>
