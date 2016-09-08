@@ -22,7 +22,7 @@ li {
 }
 
 a {
-  color: #212121;
+  color: #e7626c;
   text-decoration: none;
 }
 
@@ -34,14 +34,9 @@ a:hover {
   color: #000;
 }
 
-#title h1 a {
-  color: #e7626c;
-}
-
 .fa {
-  font-size: 2em;
-  color: #E94C4C;
-  /*color: #f7f7f7;*/
+  font-size: 1.5em;
+  color: gray;
 }
 
 #title {
@@ -64,7 +59,7 @@ a:hover {
   /*background-color: #FAFAFA;*/
 }
 
-#about .fa {
+/*#about .fa {
   color: #FF9800;
 }
 
@@ -78,23 +73,16 @@ a:hover {
 
 #blog .fa {
   color: #9C27B0;
-}
+}*/
 
-.main-content {
-/*  border: 2px solid #ff4949; */
-  margin: 20px 0px; 
-  width: 80%;
-  height: 80%;
-  padding: 10%;
-/*  height: 450px; */
-/*  overflow: scroll; */
-  background-color: #e7e7e7;
+.main {
+  margin-top: 50px;
 }
-
 
 .header {
     font-size: 3em;
     font-family: 'Montserrat Subrayada', sans-serif;
+    color: #e7626c;
 }
 
 .header-top {

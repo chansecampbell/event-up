@@ -26,57 +26,46 @@
 <body ng-controller="MainController as main">
 <header>
   <div class="container">
-    <div class="row">
-      <div ng-class="home.navClass" class="twelve columns" id="title">
-       <h1 class="header"><a ui-sref="home" ng-click="home.reverseAnimateNav()">Event Up</a></h1>
+    <div class="row" id="title">
+      <div ng-class="home.navClass" class="four columns">
+       <div class="header"><a ui-sref="home" ng-click="home.reverseAnimateNav()">Event Up</a></div>
+      </div>
+      <div class="two columns" ng-class="home.navClass" id="about">
+        <div ng-if="main.currentUser"><a ui-sref-active="active" ui-sref="home">
+        <i class="fa fa-home" aria-hidden="true"></i>
+        <br><code>Home</code>
+        </a>
+        </div>
+      </div>
+      <div class="two columns" ng-class="home.navClass" id="projects">
+        <div ng-if="main.currentUser"><a ui-sref-active="active" ui-sref="users">
+        <i class="fa fa-users" aria-hidden="true"></i>
+        <br><code>Users</code>
+        </a>
+        </div>
+      </div>
+      <div class="two columns" ng-class="home.navClass" id="blog">
+        <div ng-if="!main.currentUser"><a ui-sref-active="active" ui-sref="login">
+        <i class="fa fa-sign-in" aria-hidden="true"></i>
+        <br><code>Login</code>
+        </a>
+        </div>
+      </div>
+      <div class="two columns" ng-class="home.navClass" id="contact">
+        <div ng-if="!main.currentUser"><a ui-sref-active="active" ui-sref="register">
+        <i class="fa fa-user-plus" aria-hidden="true"></i>
+        <br><code>Register</code>
+        </a>
+        </div>
+      </div>
+      <div class="two columns" ng-class="home.navClass" id="contact">
+        <div ng-if="main.currentUser"><a ui-sref-active="active" ui-sref="home" ng-click="main.logout()">
+        <i class="fa fa-sign-out" aria-hidden="true"></i>
+        <br><code>Logout</code>
+        </a>
+        </div>
       </div>
       </div>
-
-      <div class="row nav-link">
-        <div class="three columns" ng-class="home.navClass" id="about">
-          <li ng-if="main.currentUser"><a ui-sref-active="active" ui-sref="home">
-          <i class="fa fa-male" aria-hidden="true"></i>
-          <br><code>Home</code>
-          </a>
-          </li>
-        </div>
-        <div class="three columns" ng-class="home.navClass" id="about">
-          <li ng-if="main.currentUser"><a ui-sref-active="active" ui-sref="home">
-          <i class="fa fa-male" aria-hidden="true"></i>
-          <br><code>About</code>
-          </a>
-          </li>
-        </div>
-        <div class="three columns" ng-class="home.navClass" id="projects">
-          <li ng-if="main.currentUser"><a ui-sref-active="active" ui-sref="users">
-          <i class="fa fa-code" aria-hidden="true"></i>
-          <br><code>Users</code>
-          </a>
-          </li>
-        </div>
-        <div class="three columns" ng-class="home.navClass" id="blog">
-          <li ng-if="!main.currentUser"><a ui-sref-active="active" ui-sref="login">
-          <i class="fa fa-rss-square" aria-hidden="true"></i>
-          <br><code>Login</code>
-          </a>
-          </li>
-        </div>
-        <div class="three columns" ng-class="home.navClass" id="contact">
-          <li ng-if="!main.currentUser"><a ui-sref-active="active" ui-sref="register">
-          <i class="fa fa-envelope" aria-hidden="true"></i>
-          <br><code>Register</code>
-          </a>
-          </li>
-        </div>
-        <div class="three columns" ng-class="home.navClass" id="contact">
-          <li ng-if="main.currentUser"><a ui-sref-active="active" ui-sref="home" ng-click="main.logout()">
-          <i class="fa fa-envelope" aria-hidden="true"></i>
-          <br><code>Logout</code>
-          </a>
-          </li>
-        </div>
-     </div>
-    </div>
 </header>
 
 <div ng-if="main.errorMessage">
@@ -85,7 +74,7 @@
 
 <div class="container">
   <div class="row">
-    <main ui-view class="twelve columns"></main>
+    <main ui-view class="main twelve columns"></main>
   </div>
 </div>
 
