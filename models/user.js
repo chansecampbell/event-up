@@ -7,7 +7,7 @@ var userSchema = new mongoose.Schema({
   avatar: { type: String, required: true },
   facebookId: { type: String },
   email: { type: String, required: true, unique: true },
-  passwordHash: { type: String, required: true }
+  passwordHash: { type: String, passwordRequired }
 });
 
 userSchema.set('toJSON', {
@@ -17,6 +17,17 @@ userSchema.set('toJSON', {
     return json;
   }
 });
+
+var passwordRequired = {
+        validator: function(value) {
+            if(self.password === undefined && self.facebookId !== undefined) {
+              value = {required: false};
+            } else {
+              value = {required: true};
+            }
+            return value;
+        }
+      };
 
 userSchema.virtual('password')
   .set(function(password) {
