@@ -15,12 +15,12 @@ function usersCreate(req, res) {
 }
 
 function usersShow(req, res) {
-  User.findById(req.params.id, function(err, user) {
+  User.findById(req.params.id).populate("countries").exec(function(err, user) {
     if(err) return res.status(500).json(err);
     if(!user) return res.status(404).json({ message: "Could not find a user with that id" });
     return res.status(200).json(user);
   });
-}
+};
 
 function usersUpdate(req, res) {
   User.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true }, function(err, user) {

@@ -2,6 +2,7 @@ var router              = require('express').Router();
 var jwt                 = require('jsonwebtoken');
 var secret              = require('../config/tokens').secret;
 var usersController     = require('../controllers/users');
+var countriesController = require('../controllers/countries');
 var authController      = require('../controllers/authentications');
 var facebookController  = require('../controllers/oauth');
 
@@ -30,6 +31,18 @@ router.route('/users/:id')
   .put(usersController.update)
   .patch(usersController.update)
   .delete(usersController.delete);
+
+router.route('/countries')
+  .all(secureRoute)
+  .get(countriesController.index)
+  .post(countriesController.create);
+
+router.route('/countries/:id')
+  .all(secureRoute)
+  .get(countriesController.show)
+  .put(countriesController.update)
+  .patch(countriesController.update)
+  .delete(countriesController.delete);  
 
 router.post('/register', authController.register);
 router.post('/login', authController.login);

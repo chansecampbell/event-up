@@ -1,6 +1,6 @@
-var User = require('../models/user');
-var jwt = require('jsonwebtoken');
-var secret = require('../config/tokens').secret;
+var User    = require('../models/user');
+var jwt     = require('jsonwebtoken');
+var secret  = require('../config/tokens').secret;
 
 function register(req, res) {
   User.create(req.body, function(err, user) {

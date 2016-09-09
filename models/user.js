@@ -1,5 +1,7 @@
 var mongoose = require('mongoose');
-var bcrypt = require('bcrypt');
+var bcrypt   = require('bcrypt');
+var User     = require('../models/country');
+
 
 var userSchema = new mongoose.Schema({
   first_name: { type: String, required: true },
@@ -7,7 +9,8 @@ var userSchema = new mongoose.Schema({
   avatar: { type: String, required: true },
   facebookId: { type: String },
   email: { type: String, required: true, unique: true },
-  passwordHash: { type: String, required: true }
+  passwordHash: { type: String, required: true },
+  countries: [{type: mongoose.Schema.ObjectId, ref: 'Country'}]
 });
 
 userSchema.set('toJSON', {
