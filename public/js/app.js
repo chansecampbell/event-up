@@ -18,7 +18,8 @@ function Router($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state("home", {
       url: "/",
-      templateUrl: "/templates/home.html"
+      templateUrl: "/templates/home.html",
+      controller: "MapController as map"
     })
     .state("register", {
       url: "/register",

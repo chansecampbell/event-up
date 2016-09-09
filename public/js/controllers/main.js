@@ -2,17 +2,11 @@ angular
       .module('EventUpApp')
       .controller('MainController', MainController);
 
-MainController.$inject = ["$auth", "$state", "$rootScope"];
-function MainController($auth, $state, $rootScope) {
+MainController.$inject = ["$auth", "$state", "$rootScope", "$scope", "$timeout"];
+function MainController($auth, $state, $rootScope, $scope, $timeout) {
   var self = this;
 
   this.currentUser = $auth.getPayload();
-
-  // if(this.currentUser){
-  //   this.welcomeMessage = "Welcome, " + this.currentUser.first_name;
-  //   this.welcomeImage = this.currentUser.avatar;
-  // }
-
 
   this.logout = function() {
     $auth.logout();
