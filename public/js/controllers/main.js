@@ -8,6 +8,12 @@ function MainController($auth, $state, $rootScope) {
 
   this.currentUser = $auth.getPayload();
 
+  // if(this.currentUser){
+  //   this.welcomeMessage = "Welcome, " + this.currentUser.first_name;
+  //   this.welcomeImage = this.currentUser.avatar;
+  // }
+
+
   this.logout = function() {
     $auth.logout();
     this.currentUser = null;
@@ -21,6 +27,8 @@ function MainController($auth, $state, $rootScope) {
 
   $rootScope.$on("loggedIn", function() {
     self.currentUser = $auth.getPayload();
+    this.welcomeMessage = "Welcome, " + this.currentUser.first_name;
+    this.welcomeImage = this.currentUser.avatar;
   });
 
   $rootScope.$on("$stateChangeStart", function() {

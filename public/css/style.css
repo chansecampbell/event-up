@@ -2,17 +2,11 @@
 
 body {
   background-color: #FAFAFA;
-  /*background-color: #fff;*/
-/*  background-color: #ff6a6a; */
   font-family: 'Open Sans', sans-serif;
   height: 100%;
   width: 100%;
   padding: 0;
   margin: 0;
-}
-
-h1 {
-  color: #212121;
 }
 
 li {
@@ -22,58 +16,14 @@ li {
 }
 
 a {
-  color: #e7626c;
   text-decoration: none;
 }
 
-a:active {
-  font-weight: bold;
-}
-
-a:hover {
-  color: #000;
-}
-
-.fa {
-  font-size: 1.5em;
-  color: gray;
-}
 
 #title {
   padding-top: 20px;
   text-align: center;
 }
-
-.logo {
-  width: 100px;
-  height: auto;
-}
-
-#about,
-#projects,
-#contact,
-#blog {
-  /*border: 2px solid #212121;*/
-  display: inline-block;
-  text-align: center;
-  /*background-color: #FAFAFA;*/
-}
-
-/*#about .fa {
-  color: #FF9800;
-}
-
-#projects .fa {
-  color: #4CAF50;
-}
-
-#contact .fa {
-  color: #2196F3;
-}
-
-#blog .fa {
-  color: #9C27B0;
-}*/
 
 .main {
   margin-top: 50px;
@@ -83,12 +33,6 @@ a:hover {
     font-size: 3em;
     font-family: 'Montserrat Subrayada', sans-serif;
     color: #e7626c;
-}
-
-.header-top {
-  font-size: 2.5em;
-  color: darkgrey;
-  font-family: 'Montserrat Subrayada', sans-serif;
 }
 
 .tabs {
@@ -109,11 +53,11 @@ a:hover {
   transform: translate3d(0px, -250px, 0px);
 }
 
-.tabs a.active { 
-  font-weight: bolder;
-}
-
 .avatar {
   height: 150px;
   width: auto;
+}
+
+.users-center {
+  text-align: center;
 }

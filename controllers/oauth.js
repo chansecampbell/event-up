@@ -47,7 +47,9 @@ function login(req, res) {
     var payload = {
       _id: user._id,
       avatar: user.avatar,
-      email: user.email
+      email: user.email,
+      first_name: user.first_name,
+      last_name: user.last_name
     };
 
     var token = jwt.sign(payload, secret, { expiresIn: '24h' });
