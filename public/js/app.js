@@ -35,7 +35,13 @@ function Router($stateProvider, $urlRouterProvider) {
       url: "/users",
       templateUrl: "/templates/users.html",
       controller: "UsersController as users"
+    }) 
+    .state("countries", {
+      url: "/countries",
+      templateUrl: "/templates/countries.html",
+      controller: "CountriesController as countries"
     });
+
 
     $urlRouterProvider.otherwise("/");
 }

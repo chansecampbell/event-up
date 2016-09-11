@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="six columns offset-by-three">
+    <h5>Where have you been lately?</h5>
+  </div>
+</div>
+
+<form ng-submit="country.submit()">
+  <div class="row">
+    <div class="six columns offset-by-three">
+       <label>Country Name</label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="six columns offset-by-three">
+
+    <input type="text" data-ng-model="countries.country.name" placeholder="Enter a name.." uib-typeahead="country for country in countries.getCountries($viewValue)" typeahead-loading="loadingCountries" typeahead-no-results="noResults" class="form-control">
+
+    <i ng-show="loadingCountries" 
+    class="glyphicon glyphicon-refresh"></i>
+
+    <div ng-show="noResults">
+      <i class="glyphicon glyphicon-remove"></i> No Results Found
+    </div> 
+
+    </div>
+    </div>
+
+  <div class="row">
+    <input type="submit" value="Submit" class="btn btn-primary six columns offset-by-three">
+  </div>
+</form>
+
+<div class="row">
+  <div class="twelve columns">
+    <span ng-repeat="country in countries.all"><strong>{{ country.name }}</strong> + </span>
+  </div>
+</div>

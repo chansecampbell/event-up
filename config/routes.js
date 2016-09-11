@@ -37,6 +37,9 @@ router.route('/countries')
   .get(countriesController.index)
   .post(countriesController.create);
 
+router.route('/countries/search')
+  .post(countriesController.search);
+
 router.route('/countries/:id')
   .all(secureRoute)
   .get(countriesController.show)

@@ -67,3 +67,8 @@ a {
   height: 500px;
   width: 100%;
 }
+
+h5 {
+  text-align: center;
+  color: gray;
+}

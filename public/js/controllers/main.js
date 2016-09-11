@@ -2,8 +2,8 @@ angular
       .module('EventUpApp')
       .controller('MainController', MainController);
 
-MainController.$inject = ["$auth", "$state", "$rootScope", "$scope", "$timeout"];
-function MainController($auth, $state, $rootScope, $scope, $timeout) {
+MainController.$inject = ["$auth", "$state", "$rootScope"];
+function MainController($auth, $state, $rootScope) {
   var self = this;
 
   this.currentUser = $auth.getPayload();

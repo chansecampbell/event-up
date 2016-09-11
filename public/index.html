@@ -12,7 +12,9 @@
   <!-- Custom Scripts -->
   <script type="text/javascript" src="/js/app.js"></script>
   <script type="text/javascript" src="/js/models/user.js"></script>
+  <script type="text/javascript" src="/js/models/country.js"></script>
   <script type="text/javascript" src="/js/controllers/users.js"></script>
+  <script type="text/javascript" src="/js/controllers/countries.js"></script>
   <script type="text/javascript" src="/js/controllers/main.js"></script>
   <script type="text/javascript" src="/js/controllers/map.js"></script>
   <script type="text/javascript" src="/js/controllers/register.js"></script>
@@ -32,31 +34,31 @@
       <div ng-class="home.navClass" class="six columns">
        <div class="header"><a ui-sref="home" ng-click="home.reverseAnimateNav()">Scratch Map</a></div>
       </div>
-      <div class="two columns" ng-class="home.navClass" id="about">
+      <div class="two columns" ng-class="home.navClass">
         <div ng-if="main.currentUser"><a ui-sref-active="active" ui-sref="home">
         <br><code>Home</code>
         </a>
         </div>
       </div>
-      <div class="two columns" ng-class="home.navClass" id="projects">
-        <div ng-if="main.currentUser"><a ui-sref-active="active" ui-sref="users">
-        <br><code>Users</code>
+      <div class="two columns" ng-class="home.navClass">
+        <div ng-if="main.currentUser"><a ui-sref-active="active" ui-sref="countries">
+        <br><code>Countries</code>
         </a>
         </div>
       </div>
-      <div class="two columns" ng-class="home.navClass" id="blog">
+      <div class="two columns" ng-class="home.navClass">
         <div ng-if="!main.currentUser"><a ui-sref-active="active" ui-sref="login">
         <br><code>Login</code>
         </a>
         </div>
       </div>
-      <div class="two columns" ng-class="home.navClass" id="contact">
+      <div class="two columns" ng-class="home.navClass">
         <div ng-if="!main.currentUser"><a ui-sref-active="active" ui-sref="register">
         <br><code>Register</code>
         </a>
         </div>
       </div>
-      <div class="two columns" ng-class="home.navClass" id="contact">
+      <div class="two columns" ng-class="home.navClass">
         <div ng-if="main.currentUser"><a ui-sref-active="active" ui-sref="home" ng-click="main.logout()">
         <br><code>Logout</code>
         </a>
